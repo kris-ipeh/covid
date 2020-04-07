@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
 import { Button, Form, FormGroup, Label, Input, CustomInput } from 'reactstrap';
 import { DateTime } from 'luxon';
+import pdfMake from "pdfmake/build/pdfmake";
+import pdfFonts from "pdfmake/build/vfs_fonts";
 import QRCode from 'qrcode.react';
 
 DateTime.local();
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 class CovidForm extends Component {
   constructor(props) {

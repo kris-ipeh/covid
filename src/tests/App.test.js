@@ -4,8 +4,8 @@ import '@testing-library/jest-dom/extend-expect';
 
 import App from '../app/App';
 
-test('renders learn react link', () => {
+test('render title', () => {
   const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  const title = getByText(/COVID-19: Attestation de Sortie/gi);
+  expect(title).toBeInTheDocument();
 });
