@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Button, Form, FormGroup, Label, Input, CustomInput } from 'reactstrap';
 import { DateTime } from 'luxon';
-let QRCode = require('qrcode.react');
+import QRCode from 'qrcode.react';
 
 DateTime.local();
 
@@ -100,7 +100,7 @@ class CovidForm extends Component {
     let tig = 'Participation à des missions d’intérêt général sur demande de l’autorité administrative.';
 
     return (
-      <Form>
+      <Form className="app">
         <h1 className="title">Remplissez en ligne votre attestation numérique :</h1>
         <FormGroup>
           <Label for="firstname">Prénom</Label>
@@ -127,12 +127,11 @@ class CovidForm extends Component {
         </FormGroup>
   
         <FormGroup>
-          <Label for="birthdate">Date de naissance (au format jj/mm/aaaa)</Label>
+          <Label for="birthdate">Date de naissance</Label>
           <Input
             id="birthdate"
             type="date"
             name="birthdate"
-            placeholder="01/01/1970"
             value={this.state.birthdate}
             onChange={this.onChange}
           />
@@ -243,13 +242,13 @@ class CovidForm extends Component {
           </div>
         </FormGroup>
   
+        <h2 className="title">Sortie</h2>
         <FormGroup>
           <Label for="date">Date de sortie</Label>
           <Input
             id="date"
             type="date"
             name="date"
-            placeholder="07/04/2020"
             value={this.state.date}
             onChange={this.onChange}
           />
@@ -261,7 +260,6 @@ class CovidForm extends Component {
             id="time"
             type="time"
             name="time"
-            placeholder="12:15"
             value={this.state.time}
             onChange={this.onChange}
           />

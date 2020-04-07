@@ -1,10 +1,14 @@
 import React from 'react';
+import Intro from './Intro';
 import Form from './Form';
+// import Footer from './Footer';
 
 function App() {
   return (
-    <div className="app">
+    <div>
+      <Intro />
       <Form />
+      {/* <Footer /> */}
     </div>
   );
 }
