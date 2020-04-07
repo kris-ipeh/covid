@@ -8,7 +8,7 @@ DateTime.local();
 class CovidForm extends Component {
   constructor(props) {
     super(props)
-    this.state= {
+    this.state = {
       isGenerated: false,
       dateCreatedAt: null,
       timeCreatedAt: null,
@@ -24,6 +24,25 @@ class CovidForm extends Component {
       reasons: [],
       generatedText: '',
     };
+  }
+
+  componentWillUnmount() {
+    this.setState({
+      isGenerated: false,
+      dateCreatedAt: null,
+      timeCreatedAt: null,
+      firstname: '',
+      lastname: '',
+      birthdate: '',
+      birthplace: '',
+      address: '',
+      city: '',
+      zip: '',
+      date: '',
+      time: '',
+      reasons: [],
+      generatedText: '',
+    });
   }
 
   onChange = (e) => {
@@ -50,11 +69,8 @@ class CovidForm extends Component {
     e.preventDefault();
 
     return this.getDateFormat()
-      .then(() => {
-        console.log('state', this.state);
-        
-        let regex = /,/gi;
-        let reasons = this.state.reasons.toString().replace(regex, ', ');
+      .then(() => {        
+        let reasons = this.state.reasons.toString().replace(/,/gi , '-');
         let generatedText = `Cree le: ${this.state.dateCreatedAt} a ${this.state.timeCreatedAt}; Nom: ${this.state.lastname}; Prenom: ${this.state.firstname}; Naissance: ${this.state.birthdate} a ${this.state.birthplace}; Adresse: ${this.state.address} ${this.state.zip} ${this.state.city}; Sortie: ${this.state.date} a ${this.state.time}; Motifs: ${reasons}`;
     
         this.setState({generatedText});
@@ -96,8 +112,8 @@ class CovidForm extends Component {
     let sante = 'Consultations et soins ne pouvant être assurés à distance et ne pouvant être différés ; consultations et soins des patients atteints d\'une affection de longue durée.';
     let sport = 'Déplacements brefs, dans la limite d\'une heure quotidienne et dans un rayon maximal d\'un kilomètre autour du domicile, liés soit à l\'activité physique individuelle des personnes, à l\'exclusion de toute pratique sportive collective et de toute proximité avec d\'autres personnes, soit à la promenade avec les seules personnes regroupées dans un même domicile, soit aux besoins des animaux de compagnie.';
     let famille = 'Déplacements pour motif familial impérieux, pour l’assistance aux personnes vulnérables ou la garde d’enfants.';
-    let convocation = 'Convocation judiciaire ou administrative.';
-    let tig = 'Participation à des missions d’intérêt général sur demande de l’autorité administrative.';
+    let judiciaire = 'Convocation judiciaire ou administrative.';
+    let missions = 'Participation à des missions d’intérêt général sur demande de l’autorité administrative.';
 
     return (
       <Form className="app">
@@ -111,6 +127,7 @@ class CovidForm extends Component {
             placeholder="Jean"
             value={this.state.firstname}
             onChange={this.onChange}
+            required
           />
         </FormGroup>
   
@@ -123,6 +140,7 @@ class CovidForm extends Component {
             placeholder="Dupont"
             value={this.state.lastname}
             onChange={this.onChange}
+            required
           />
         </FormGroup>
   
@@ -134,6 +152,7 @@ class CovidForm extends Component {
             name="birthdate"
             value={this.state.birthdate}
             onChange={this.onChange}
+            required
           />
         </FormGroup>
   
@@ -146,6 +165,7 @@ class CovidForm extends Component {
             placeholder="Lyon"
             value={this.state.birthplace}
             onChange={this.onChange}
+            required
           />
         </FormGroup>
   
@@ -158,6 +178,7 @@ class CovidForm extends Component {
             placeholder="999 avenue de france"
             value={this.state.address}
             onChange={this.onChange}
+            required
           />
         </FormGroup>
   
@@ -170,6 +191,7 @@ class CovidForm extends Component {
             placeholder="Paris"
             value={this.state.city}
             onChange={this.onChange}
+            required
           />
         </FormGroup>
   
@@ -177,11 +199,12 @@ class CovidForm extends Component {
           <Label for="zip">Code Postal</Label>
           <Input
             id="zip"
-            type="text"
+            type="number"
             name="zip"
             placeholder="75001"
             value={this.state.zip}
             onChange={this.onChange}
+            required
           />
         </FormGroup>
 
@@ -228,15 +251,15 @@ class CovidForm extends Component {
             <CustomInput type="checkbox" 
               id="reason6" 
               className="checkbox" 
-              name="convocation" 
-              label={convocation} 
+              name="judiciaire" 
+              label={judiciaire} 
               onChange={this.onCheck} 
             />
             <CustomInput type="checkbox" 
               id="reason7" 
               className="checkbox" 
-              name="tig" 
-              label={tig} 
+              name="missions" 
+              label={missions} 
               onChange={this.onCheck} 
             />
           </div>
@@ -251,6 +274,7 @@ class CovidForm extends Component {
             name="date"
             value={this.state.date}
             onChange={this.onChange}
+            required
           />
         </FormGroup>
   
@@ -262,6 +286,7 @@ class CovidForm extends Component {
             name="time"
             value={this.state.time}
             onChange={this.onChange}
+            required
           />
         </FormGroup>
   

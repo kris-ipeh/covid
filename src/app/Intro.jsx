@@ -4,6 +4,7 @@ function Intro() {
   return (
     <div className="intro">
       <h1 className="header">COVID-19: Attestation de Sortie</h1>
+      
       <p className="app">
         Les données saisies sont stockées exclusivement sur votre téléphone ou votre ordinateur. 
         Aucune information n'est collectée par le Ministère de l'Intérieur. 
