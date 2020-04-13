@@ -11,12 +11,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-p {
-  margin-bottom: 0;
-}
 
 .app {
-  max-width: 500px;
+  max-width: 600px;
   margin: auto;
   padding: 1rem;
 }
@@ -36,6 +33,38 @@ p {
   color: $color;
 }
 
+.lang {
+  margin-bottom: .5rem;
+
+  .flags {
+    display: flex;
+    margin-left: 80%;
+
+    img {
+      margin: 0.5rem;
+    }
+  }
+}
+
+.intro {
+  margin-left: 1rem;
+
+  p {
+    margin-bottom: 1rem;
+  }
+  
+  .bold {
+    font-weight: bold;
+    color: red;
+    text-align: center;
+    font-size: 1.2rem;
+  }
+}
+
+p {
+  margin-bottom: 0;
+}
+
 .checkbox {
   margin-top: 1rem;
 }
@@ -48,19 +77,4 @@ p {
 .button {
   margin-top: 1.5rem;
   background-color: $color;
-}
-
-canvas {
-  margin: 3rem;
-}
-
-.footer {
-  color: $light;
-  background-color: $dark;
-  text-align: center;
-  padding: .5rem;
-  position: static;
-  left: 0;
-  bottom: 0;
-  width: 100%;
 }
