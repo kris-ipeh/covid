@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "bootstrap": "^4.4.1",
-    "luxon": "^1.23.0",
+    "luxon": "^2.5.2",
     "node-sass": "^4.13.1",
     "pdfmake": "^0.1.65",
     "qrcode.react": "^1.0.0",
